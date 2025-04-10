@@ -10,3 +10,8 @@ export interface WeatherInterface {
     lowTemperature: number;
     avgHumidity: number;
   };
+
+  export interface NavbarProps {
+      menuOpen: boolean;
+      setMenuOpen: (open: boolean) => void;
+  }

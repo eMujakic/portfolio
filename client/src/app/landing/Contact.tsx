@@ -28,12 +28,12 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="min-h-[80vh] flex items-center justify-center py-20"
+      className="min-h-[80vh] md:min-h-screen flex items-center justify-center"
     >
       <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.6 }}
+      viewport={{ once: true, amount: 0.4 }}
       variants={containerVariants}
     >
         <div className="px-4 w-full min-w-[375px] md:w-[500px] sm:w-2/3 p-6">

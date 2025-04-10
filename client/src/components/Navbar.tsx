@@ -1,11 +1,7 @@
 "use client"
 
+import { NavbarProps } from '@/lib/types'
 import React, { useEffect } from 'react'
-
-interface NavbarProps {
-    menuOpen: boolean;
-    setMenuOpen: (open: boolean) => void;
-}
 
 const Navbar: React.FC<NavbarProps> = ({menuOpen, setMenuOpen}) => {
 

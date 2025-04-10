@@ -33,10 +33,10 @@ const About = () => {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.6 }}
+        viewport={{ once: true, amount: 0.4 }}
         variants={containerVariants}
       >
-        <div className="max-w-3xl mx-auto px-4">
+        <div className="max-w-3xl mx-auto px-4 text-center md:text-left">
           <h2 className="section-heading">About Me</h2>
 
           <div className="rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all bg-[#0f0f0f]">
@@ -48,9 +48,9 @@ const About = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="rounded-xl p-6 hover:-translate-y-1 transition-all">
                 <h3 className="text-xl font-bold mb-4">Frontend</h3>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 justify-center md:justify-start">
                   {frontendSkills.map((tech, key) => (
-                    <span key={key} className="tech-icon">
+                    <span key={key} className="tech-icon ">
                       {tech}
                     </span>
                   ))}
@@ -58,7 +58,7 @@ const About = () => {
               </div>
               <div className="rounded-xl p-6 hover:-translate-y-1 transition-all">
                 <h3 className="text-xl font-bold mb-4">Backend</h3>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 justify-center md:justify-start">
                   {backendSkills.map((tech, key) => (
                     <span key={key} className="tech-icon">
                       {tech}
