@@ -81,15 +81,14 @@ const Projects = () => {
               <div className="flex flex-wrap gap-2 mb-4 justify-center md:justify-start">
                 {[
                   "C++",
-                  "ESP32",
-                  "TypeScript",
-                  "Node.js",
-                  "Express.js",
-                  "AWS Lambda",
-                  "AWS Lambda",
                   "React",
+                  "Node.js",
+                  "AWS",
                   "DynamoDB",
-                  "Next.js",
+                  "TypeScript",
+                  "Recharts",
+                  "ESP32",
+                  "PlatformIO",
                 ].map((tech, key) => (
                   <span key={key} className="tech-icon">
                     {tech}

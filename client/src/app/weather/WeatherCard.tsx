@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 import { format, toZonedTime } from "date-fns-tz";
 import { Moon, Sun } from "lucide-react";
 import { WeatherInterface } from "@/lib/types";
-import TemperatureGraph from "./TemparatureChart";
+import TemperatureGraph from "./TemperatureChart";
 import { celsiusArray, celsiusFormat, containerVariants, convertToCelsius } from "@/lib/utils";
-import WeekChart from "./WeekData";
+import WeekChart from "./WeekChart";
 import { Separator } from "@/components/ui/separator"
 
 //TODO: Test call and post timing
@@ -77,7 +77,7 @@ const WeatherCard = () => {
       variants={containerVariants}
     >
       <div
-        className="relative mt-14 w-4/5 md:w-4/5 lg:w-3/5 xl:w-2/5 max-w-6xl mx-auto
+        className="relative mt-18 w-4/5 md:w-4/5 lg:w-3/5 xl:w-2/5 max-w-6xl mx-auto
                     p-6 sm:px-8 lg:px-12 xl:px-16 gradient-one
                     rounded-xl border-gray-500 border text-white hover-glow2"
       >

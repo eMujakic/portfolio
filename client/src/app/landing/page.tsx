@@ -9,7 +9,6 @@ import ParticlesBackground from "@/components/ParticleBackground";
 const Landing = () => {
   return (
     <>
-      <ParticlesBackground  />
       <div className="min-h-screen transition-opacity duration-200">
         <Home />
         <About />

@@ -105,7 +105,7 @@ const  ParticlesBackground = () => {
         id="tsparticles"
         particlesLoaded={particlesLoaded}
         options={options}
-        className="z-[-1]"
+        className="z-[-1] absolute"
       />
     );
   }

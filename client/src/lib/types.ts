@@ -1,17 +1,23 @@
 export interface WeatherInterface {
-    hour: number;
-    temperature: number;
-    humidity: number;
-  };
-  
-  export interface dayInterface {
-    day: string;
-    highTemperature: number;
-    lowTemperature: number;
-    avgHumidity: number;
-  };
+  hour: number;
+  temperature: number;
+  humidity: number;
+}
 
-  export interface NavbarProps {
-      menuOpen: boolean;
-      setMenuOpen: (open: boolean) => void;
-  }
+export interface dayInterface {
+  day: string;
+  highTemperature: number;
+  lowTemperature: number;
+  avgHumidity: number;
+}
+
+export interface NavbarProps {
+  menuOpen: boolean;
+  setMenuOpen: (open: boolean) => void;
+}
+;
+
+export interface TempGraphProps {
+    data: WeatherInterface[];
+    isFahrenheit: boolean;
+}
