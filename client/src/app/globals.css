@@ -199,11 +199,11 @@
 }
 
 .slider-button {
-  @apply text-black cursor-pointer bg-white hover:bg-gray-300 mx-7 lg:mx-32 xl:mx-34
+  @apply text-black cursor-pointer bg-white hover:bg-gray-300 mx-7 lg:mx-38 xl:mx-42 md:mx-32
 }
 
 .slider-img {
-  @apply rounded-sm mx-auto lg:w-4/5 lg:px-0
+  @apply rounded-sm mx-auto md:max-w-9/12 lg:max-w-9/12 lg:px-0
 }
 
 .tech-icon {

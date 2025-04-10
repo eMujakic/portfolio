@@ -16,7 +16,7 @@ const Overview = () => {
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.6 }}
+      viewport={{ once: true, amount: 0.3 }}
       variants={containerVariants}
     >
       <div
@@ -35,7 +35,7 @@ const Overview = () => {
             opts={{
               loop: true,
             }}
-            className="w-3x"
+            className=""
           >
             <CarouselContent className="">
               <CarouselItem className="">

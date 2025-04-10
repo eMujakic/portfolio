@@ -69,7 +69,7 @@ const CustomTooltip: React.FC<TooltipProps<number, string>> = ({
     return (
       <div
         style={{
-          backgroundColor: "#000",
+          backgroundColor: "",
           border: "1px solid #ccc",
           borderRadius: "5px",
           padding: "9px",

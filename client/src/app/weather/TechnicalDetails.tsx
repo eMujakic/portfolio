@@ -9,7 +9,7 @@ const TechnicalDetails = () => {
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.6 }}
+      viewport={{ once: true, amount: 0.3 }}
       variants={containerVariants}
     >
     <div
@@ -23,10 +23,10 @@ const TechnicalDetails = () => {
       <div className="p-0 md:p-6 mt-2">
         <div
           className="p-6 rounded-xl border border-white/10 hover:-translate-y-1
-                     hover-glow"
+                     hover-glow bg-[#0f0f0f] max-w-3xl mx-auto"
         >
-          <h3 className="text-xl font-bold mb-2 text-center">Cloud Platform</h3>
-          <p className="text-gray-300 mb-4">
+          <h3 className="text-xl font-bold mb-2 text-center">Temperature and Humidity Monitoring System</h3>
+          <p className="text-gray-300 mb-4 text-center md:text-left text-lg">
           This IoT project leverages an ESP32 microcontroller to gather temperature and humidity data,
           which is transmitted to a RESTful API developed with Node.js and Express.js. To enhance power efficiency,
           the ESP32 enters sleep mode when not actively collecting data, significantly reducing energy consumption.

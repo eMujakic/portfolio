@@ -4,7 +4,7 @@ import {
     getGradientColors,
   } from "@/lib/utils";
   import React from "react";
-  import { BarChart, Bar, ResponsiveContainer, XAxis, Tooltip } from "recharts";
+  import { BarChart, Bar, ResponsiveContainer, XAxis, Tooltip, TooltipProps, Rectangle } from "recharts";
   
   const data = [
     {
@@ -64,19 +64,46 @@ import {
                 <stop offset="100%" stopColor={"#ffaa00"} stopOpacity={0.0} />
               </linearGradient>
             </defs>
-            <Bar dataKey="uv" fill="url(#color2)" stroke="" />
+            <Bar dataKey="uv" fill="url(#color2)" stroke=""/>
             <XAxis
               dataKey="name"
               stroke="#bbbbbb"
               tickLine={false}
               tick={{ transform: "translate(0, 3)" }}
             />
-            <Tooltip />
+            <Tooltip content={<CustomTooltip />} cursor={{fillOpacity: 0.04,}}/>
           </BarChart>
         </ResponsiveContainer>
       </div>
     );
   };
-  
+
+  const CustomTooltip: React.FC<TooltipProps<number, string>> = ({
+    active,
+    payload,
+    label,
+  }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div
+          style={{
+            backgroundColor: "",
+            border: "1px solid #ccc",
+            borderRadius: "5px",
+            padding: "9px",
+            marginTop: "14px",
+          }}
+        >
+          <h4 style={{ margin: 0 }}>
+            {label}
+          </h4>
+          <p style={{ margin: 0 }}>{`High: ${payload[0].value?.toFixed(1)}°`}</p>
+          <p style={{ margin: 0 }}>{`Low: ${payload[0].value?.toFixed(1)}°`}</p>
+        </div>
+      );
+    }
+    return null;
+  };
+
   export default WeekChart;
   

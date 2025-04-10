@@ -56,8 +56,6 @@ const WeatherCard = () => {
 
     let interval: NodeJS.Timeout;
 
-    console.log(new Date().getTime());
-
     const timeout = setTimeout(() => {
       fetchData();
       interval = setInterval(fetchData, 3600000); // Every hour
