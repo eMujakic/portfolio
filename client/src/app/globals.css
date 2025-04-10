@@ -24,3 +24,80 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer components {
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #6d7580 #1a202c;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #1a202c;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #6d7580;
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #6d7580;
+  }
+}
+
+@layer utilities {
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+  .animate-blink {
+    animation: blink .8s step-end infinite;
+  }
+
+  @keyframes loading {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(250%);
+    }
+  }
+  .animate-loading-bar {
+    animation: loading 1.2s ease infinite;
+  }
+
+  .section-heading{
+    @apply text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500
+         to-cyan-200 bg-clip-text text-transparent text-center
+  }
+
+  .tech-icon {
+    @apply bg-blue-500/10 text-blue-400 py-1 px-3 rounded-full text-sm
+           hover:bg-blue-500/20 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)]
+             cursor-default
+  }
+
+  .form-input {
+    @apply w-full bg-white/5 border border-white/10 rounded px-4 py-3
+         text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
