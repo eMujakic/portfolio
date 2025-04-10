@@ -1,13 +1,27 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Landing from "./landing/page";
 import Navbar from "@/components/Navbar";
 import MobileMenu from "@/components/MobileMenu";
 import ParticlesBackground from "@/components/ParticleBackground";
+import Loading from "@/components/Loading";
 
 const Home = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <>

@@ -27,7 +27,7 @@ const Projects = () => {
               <h3 className="text-xl font-bold mb-2">
                 Full-Stack Real Estate Application
               </h3>
-              <p className="text-gray-400 mb-4">
+              <p className="text-gray-400 mb-4 md:text-lg">
                 A comprehensive full stack real estate application that connect
                 tenants with properties and enable managers to showcase and
                 manage listings. The frontend features a user-friendly interface
@@ -70,7 +70,7 @@ const Projects = () => {
               <h3 className="text-xl font-bold mb-2">
                 Temperature and Humidity Monitoring System{" "}
               </h3>
-              <p className="text-gray-400 mb-4">
+              <p className="text-gray-400 mb-4 md:text-lg">
                 A comprehensive Internet of Things (IoT) solution that monitors
                 temperature and humidity levels. Utilizes an ESP32 device to
                 collect data from sensors and transmit it to a web application.
@@ -98,7 +98,7 @@ const Projects = () => {
 
               <div className="flex justify-between items-center">
                 <a
-                  href="#"
+                  href="/weather"
                   className="text-blue-400 hover:text-blue-200 transition-colors my-4 mx-auto md:mx-0"
                 >
                   View Project ➡

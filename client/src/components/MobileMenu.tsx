@@ -23,7 +23,7 @@ const MobileMenu: React.FC<NavbarProps> = ({menuOpen, setMenuOpen}) => {
       </button>
 
       <a
-        href="#home"
+        href="/#home"
         onClick={() => setMenuOpen(false)}
         className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
             ${menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
@@ -31,7 +31,7 @@ const MobileMenu: React.FC<NavbarProps> = ({menuOpen, setMenuOpen}) => {
         Home
       </a>
       <a
-        href="#about"
+        href="/#about"
         onClick={() => setMenuOpen(false)}
         className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
             ${menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
@@ -39,7 +39,7 @@ const MobileMenu: React.FC<NavbarProps> = ({menuOpen, setMenuOpen}) => {
         About
       </a>
       <a
-        href="#projects"
+        href="/#projects"
         onClick={() => setMenuOpen(false)}
         className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
             ${menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
@@ -47,7 +47,7 @@ const MobileMenu: React.FC<NavbarProps> = ({menuOpen, setMenuOpen}) => {
         Projects
       </a>
       <a
-        href="#contact"
+        href="/weather"
         onClick={() => setMenuOpen(false)}
         className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
             ${menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
@@ -55,7 +55,7 @@ const MobileMenu: React.FC<NavbarProps> = ({menuOpen, setMenuOpen}) => {
         Weather
       </a>
       <a
-        href="#contact"
+        href="/#contact"
         onClick={() => setMenuOpen(false)}
         className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
             ${menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}

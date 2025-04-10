@@ -22,10 +22,10 @@ const Home = () => {
           </h1>
 
           <p className="text-gray-300 text-lg mb-8 max-w-lg mx-auto">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia fugit
-            nulla dolorum accusamus, officiis facere eaque sit vitae architecto
-            dolores tempora suscipit, aliquam nemo ducimus at aut totam
-            provident tenetur!
+            Welcome to My Portfolio! I am a passionate software engineer
+            dedicated to building innovative solutions that solve real-world
+            problems. Explore my portfolio to see examples of my work and the
+            impact I can bring to your team.
           </p>
 
           <div className="flex justify-center space-x-4">

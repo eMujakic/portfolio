@@ -10,19 +10,29 @@ const About = () => {
     "HTML",
     "CSS",
     "JavaScript",
-    "Next",
+    "Next.js",
     "TailwindCSS",
+    "Typescript",
+    "Recharts",
   ];
 
   const backendSkills = [
-    "Node.js",
     "Python",
-    "SQL",
-    "AWS",
-    "Django",
+    "C & C++",
+    "JavaScript / Typescript",
+    "AI & Machine Learning",
+    "MySQL & PostgreSQL",
     "MongoDB",
-    "SpringBoot",
-    "REST APIs",
+    "Node.js & Express.js",
+    "Django",
+    "Spring Boot",
+    "Linux",
+    "Git",
+    "AWS",
+    "Docker",
+    "RESTful APIs",
+    "Agile & Scrum Methodologies",
+    "Java",
   ];
 
   return (
@@ -41,8 +51,10 @@ const About = () => {
 
           <div className="rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all bg-[#0f0f0f]">
             <p className="text-gray-200 mb-6">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Dignissimos quidem doloribus perferendis placeat Dicta.
+              Detail-oriented Computer Science student with a strong foundation
+              in software development principles and a keen interest in creating
+              innovative applications. Committed to applying analytical skills
+              and technical knowledge to contribute to impactful projects.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
