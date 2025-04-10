@@ -28,7 +28,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="min-h-screen flex items-center justify-center py-20"
+      className="min-h-[80vh] flex items-center justify-center py-20"
     >
       <motion.div
       initial="hidden"

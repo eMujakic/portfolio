@@ -28,7 +28,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="min-h-screen flex items-center justify-center py-20"
+      className="min-h-[80vh] flex items-center justify-center py-20"
     >
       <motion.div
         initial="hidden"
@@ -69,7 +69,7 @@ const About = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+          <div className="grid grid-cols-1f gap-6 mt-8">
             <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all bg-[#0f0f0f]">
               <h3 className="text-xl font-bold mb-4">🏫 Education</h3>
               <ul className="list-item list-inside text-gray-300 space-y-3">
@@ -95,7 +95,7 @@ const About = () => {
                 </li>
               </ul>
             </div>
-            <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all bg-[#0f0f0f]">
+            {/* <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all bg-[#0f0f0f]">
               <h3 className="text-xl font-bold mb-4">💼 Work Experience</h3>
               <div className="space-y-4 text-gray-300">
                 <div>
@@ -118,7 +118,7 @@ const About = () => {
                   </p>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </motion.div>

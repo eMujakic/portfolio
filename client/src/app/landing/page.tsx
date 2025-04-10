@@ -8,15 +8,15 @@ import ParticlesBackground from "@/components/ParticleBackground";
 
 const Landing = () => {
   return (
-    <div
-      className="min-h-screen transition-opacity duration-200"
-    >
-      {/* <ParticlesBackground /> */}
-      <Home />
-      <About />
-      <Projects />
-      <Contact />
-    </div>
+    <>
+      <ParticlesBackground/>
+      <div className="min-h-screen transition-opacity duration-200">
+        <Home />
+        <About />
+        <Projects />
+        <Contact />
+      </div>
+    </>
   );
 };
 

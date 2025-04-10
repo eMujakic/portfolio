@@ -11,7 +11,7 @@ import {
 
 import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
 
-const ParticlesBackground = () => {
+const  ParticlesBackground = () => {
   const [init, setInit] = useState(false);
 
   // this should be run only once per application lifetime
@@ -105,6 +105,7 @@ const ParticlesBackground = () => {
         id="tsparticles"
         particlesLoaded={particlesLoaded}
         options={options}
+        className="z-[-1]"
       />
     );
   }
