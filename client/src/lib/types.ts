@@ -4,11 +4,16 @@ export interface WeatherInterface {
   humidity: number;
 }
 
-export interface dayInterface {
-  day: string;
-  highTemperature: number;
-  lowTemperature: number;
-  avgHumidity: number;
+export interface FetchDayInterface {
+  day: number;
+  high: number;
+  low: number;
+}
+
+export interface DayInterface {
+  day: string | number;
+  high: number;
+  low: number;
 }
 
 export interface NavbarProps {
@@ -20,4 +25,9 @@ export interface NavbarProps {
 export interface TempGraphProps {
     data: WeatherInterface[];
     isFahrenheit: boolean;
+}
+
+export interface WeekGraphProps {
+  data: DayInterface[];
+  isFahrenheit: boolean;
 }

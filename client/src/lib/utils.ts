@@ -1,11 +1,10 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { DayInterface, WeatherInterface } from "./types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
-
-import { WeatherInterface } from "./types";
 
 export const getGradientColors = (temperature: number) => {
   if (temperature < 50) return ["#22b4ff", "#2451B7"];
@@ -40,6 +39,14 @@ export const celsiusArray = (tempData: WeatherInterface[]): WeatherInterface[] =
   }))
 };
 
+export const celsiusDayArray = (tempData: DayInterface[]): DayInterface[] => {
+  return tempData.map((data) => ({
+    ...data,
+    high: convertToCelsius(data.high),
+    low: convertToCelsius(data.low),
+  }))
+};
+
 export const fahrenheitArray = (tempData: WeatherInterface[]): WeatherInterface[] => {
   return tempData.map((data) => ({
     ...data,
@@ -56,16 +63,61 @@ export const containerVariants = {
   },
 };
 
-function getDayAbbreviation(day: number): 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat' | undefined {
-  const days: { [key: number]: 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat' } = {
-    0: 'Sun',
-    1: 'Mon',
-    2: 'Tue',
-    3: 'Wed',
-    4: 'Thu',
-    5: 'Fri',
-    6: 'Sat',
-  };
+export function getDayAbbreviation(day: number): string {
 
-  return days[day];
+  let abbreviation = "";
+
+  switch (day) {
+    case 0:
+      abbreviation = "Sun";
+      break;
+    case 1:
+      abbreviation = "Mon";
+      break;
+    case 2:
+      abbreviation = "Tue";
+      break;
+    case 3:
+      abbreviation = "Wed";
+      break;
+    case 4:
+      abbreviation = "Thu";
+      break;
+    case 5:
+      abbreviation = "Fri";
+      break;
+    case 6:
+      abbreviation = "Sat";
+      break;
+  }
+
+  return abbreviation;
 }
+
+export const runAtNextHour = () => {
+  const now = new Date();
+  const nextHour = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate(),
+    now.getHours() + 1,
+    0,
+    0,
+    0
+  );
+  return nextHour.getTime() + 120000 - now.getTime();
+};
+
+export const runAtNextDay = () => {
+  const now = new Date();
+  const nextHour = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate() + 1,
+    now.getHours(),
+    0,
+    0,
+    0
+  );
+  return nextHour.getTime() + 300000 - now.getTime();
+};
