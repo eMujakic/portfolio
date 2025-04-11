@@ -121,3 +121,19 @@ export const runAtNextDay = () => {
   );
   return nextHour.getTime() + 300000 - now.getTime();
 };
+
+export function convertHourTo12HourFormat(hour: number): string {
+  let period = 'AM';
+  let convertedHour = hour;
+
+  if (hour === 0) {
+      convertedHour = 12;
+  } else if (hour === 12) {
+      period = 'PM';
+  } else if (hour > 12) {
+      convertedHour = hour - 12;
+      period = 'PM';
+  }
+
+  return `${convertedHour}${period}`;
+}

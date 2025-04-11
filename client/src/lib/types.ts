@@ -1,13 +1,7 @@
 export interface WeatherInterface {
-  hour: number;
+  hour: number| string;
   temperature: number;
   humidity: number;
-}
-
-export interface FetchDayInterface {
-  day: number;
-  high: number;
-  low: number;
 }
 
 export interface DayInterface {

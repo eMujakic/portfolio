@@ -12,6 +12,7 @@ import {
   celsiusDayArray,
   celsiusFormat,
   containerVariants,
+  convertHourTo12HourFormat,
   convertToCelsius,
   getDayAbbreviation,
   runAtNextDay,
@@ -50,7 +51,13 @@ const WeatherCard = () => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get("http://localhost:3005/api/weather");
-      setWeatherData(result.data);
+      const newData = result.data.map(
+        (data: WeatherInterface): WeatherInterface => ({
+          ...data,
+          hour: convertHourTo12HourFormat(Number(data.hour)),
+        })
+      );
+      setWeatherData(newData);
     };
     fetchData();
     let interval: NodeJS.Timeout;
@@ -167,6 +174,9 @@ const WeatherCard = () => {
             data={isFahrenheit ? dayData : celsiusDayArray(dayData)}
             isFahrenheit={isFahrenheit}
           ></WeekChart>
+          <h4 className="text-lg md:text-md font-light my-1 md:my-0 text-center md:ml-4">
+            Past Week
+          </h4>
         </div>
       </div>
     </motion.div>

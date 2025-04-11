@@ -42,7 +42,10 @@ const TemperatureGraph: React.FC<TempGraphProps> = ({ data, isFahrenheit }) => {
             dataKey="hour"
             stroke="#bbbbbb"
             tickLine={false}
-            tick={{ transform: "translate(0, 5)" }}
+            tick={{ transform: "translate(0, 5)"}}
+            tickFormatter={(time) => {
+              return `${parseInt(time)}`;
+            }}
           />
           <YAxis
             stroke="#bbbbbb"
@@ -66,6 +69,7 @@ const CustomTooltip: React.FC<TooltipProps<number, string>> = ({
   label,
 }) => {
   if (active && payload && payload.length) {
+    const { temperature, humidity } = payload[0].payload;
     return (
       <div
         style={{
@@ -76,11 +80,9 @@ const CustomTooltip: React.FC<TooltipProps<number, string>> = ({
           marginTop: "14px",
         }}
       >
-        <h4 style={{ margin: 0 }}>
-          {label}
-          {label > 12 ? "PM" : "AM"}
-        </h4>
-        <p style={{ margin: 0 }}>{`Temp: ${payload[0].value?.toFixed(1)}°`}</p>
+        <h4 style={{ margin: 0 }}>{label}</h4>
+        <p style={{ margin: 0 }}>{`Temp: ${temperature?.toFixed(1)}°`}</p>
+        <p style={{ margin: 0 }}>{`Humidity: ${humidity?.toFixed(0)}%`}</p>
       </div>
     );
   }
