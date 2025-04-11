@@ -20,7 +20,7 @@ const Overview = () => {
       variants={containerVariants}
     >
       <div
-        className="mt-34 md:mt-40
+        className="mt-34 md:mt-40 max-h-screen
                     max-w-6xl xl:max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 text-white"
       >
         <h1 className="section-heading">Project Overview</h1>

@@ -17,7 +17,7 @@ const Home = () => {
         variants={containerVariants}
       >
         <div className="text-center z-10 px-4">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-300 to-purple-600 bg-clip-text leading-right text-transparent">
+          <h1 className="pb-3 text-5xl md:text-7xl font-bold mb-3 bg-gradient-to-r from-blue-300 to-purple-600 bg-clip-text leading-right text-transparent">
             Hi, I'm Ernad Mujakic
           </h1>
 

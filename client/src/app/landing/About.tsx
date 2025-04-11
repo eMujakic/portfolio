@@ -50,7 +50,7 @@ const About = () => {
           <h2 className="section-heading">About Me</h2>
 
           <div className="rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all bg-[#0f0f0f]">
-            <p className="text-gray-200 mb-6">
+            <p className="text-gray-200 mb-6 md:text-lg">
               Detail-oriented Computer Science student with a strong foundation
               in software development principles and a keen interest in creating
               innovative applications. Committed to applying analytical skills
@@ -81,7 +81,7 @@ const About = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1f gap-6 mt-8">
+          <div className="grid grid-cols-1f gap-6 mt-8 md:text-lg">
             <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all bg-[#0f0f0f]">
               <h3 className="text-xl font-bold mb-4">🏫 Education</h3>
               <ul className="list-item list-inside text-gray-300 space-y-3">
@@ -90,7 +90,7 @@ const About = () => {
                   Unviersity (2024 - Current)
                 </li>
                 <li>
-                  <strong>Releveant Coursework</strong>: Data Structures,
+                  <i>Releveant Coursework</i>: Data Structures,
                   Software Engineering, Cloud Computing...
                 </li>
                 <br />
