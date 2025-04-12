@@ -1,14 +1,13 @@
 export interface WeatherInterface {
-  hour: number;
+  hour: number| string;
   temperature: number;
   humidity: number;
 }
 
-export interface dayInterface {
-  day: string;
-  highTemperature: number;
-  lowTemperature: number;
-  avgHumidity: number;
+export interface DayInterface {
+  day: string | number;
+  high: number;
+  low: number;
 }
 
 export interface NavbarProps {
@@ -20,4 +19,9 @@ export interface NavbarProps {
 export interface TempGraphProps {
     data: WeatherInterface[];
     isFahrenheit: boolean;
+}
+
+export interface WeekGraphProps {
+  data: DayInterface[];
+  isFahrenheit: boolean;
 }
