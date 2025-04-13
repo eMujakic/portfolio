@@ -22,8 +22,7 @@ import WeekChart from "./WeekChart";
 import { Separator } from "@/components/ui/separator";
 import SunCalc from "suncalc";
 
-//TODO: Test call and post timing
-//TODO: Add week historical data
+
 
 const WeatherCard = () => {
   const [weatherData, setWeatherData] = useState<WeatherInterface[]>([]);
@@ -35,8 +34,8 @@ const WeatherCard = () => {
   const day = format(zonedDate, "EEEE", { timeZone });
 
   const sun = SunCalc.getTimes(new Date(), 32, -96);
-  const sunrise = sun.sunrise;
-  const sunset = sun.sunset;
+  const sunrise = toZonedTime(sun.sunrise, timeZone);
+  const sunset = toZonedTime(sun.sunset, timeZone);
 
   const [isFahrenheit, setIsFahrenheit] = useState(true);
 
