@@ -1,4 +1,5 @@
-import {WeekGraphProps } from "@/lib/types";
+import { WeekGraphProps } from "@/lib/types";
+import { getTempColor } from "@/lib/utils";
 import React from "react";
 import {
   BarChart,
@@ -7,31 +8,37 @@ import {
   XAxis,
   Tooltip,
   TooltipProps,
+  Cell,
 } from "recharts";
 
 const WeekChart: React.FC<WeekGraphProps> = ({ data, isFahrenheit }) => {
-  
   return (
     <div className="mr-3 mt-8 h-45 md:h-60 lg:h-72 xl:h-76">
       <ResponsiveContainer height="100%">
         <BarChart data={data}>
           <defs>
-            {/* <linearGradient id="cold" x1="0" y1="1" x2="0" y2="0">
-          <stop offset="0%" stopColor={"#22b4ff"} stopOpacity={0.4} />
-          <stop offset="100%" stopColor={"#2451B7"} stopOpacity={0.01} />
-        </linearGradient> */}
+            <linearGradient id="cold" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0%" stopColor={"#22b4ff"} stopOpacity={0.4} />
+              <stop offset="100%" stopColor={"#2451B7"} stopOpacity={0.01} />
+            </linearGradient>
 
             <linearGradient id="warm" x1="0" y1="1" x2="0" y2="0">
-              <stop offset="0%" stopColor={"#ff7c00"} stopOpacity={0.4} />
+              <stop offset="0%" stopColor={"#ff7c00 "} stopOpacity={0.4} />
               <stop offset="100%" stopColor={"#ffaa00"} stopOpacity={0.01} />
             </linearGradient>
-            {/* 
-        <linearGradient id="hot" x1="0" y1="1" x2="0" y2="0">
-        <stop offset="0%" stopColor={"#ff0000"} stopOpacity={0.4} />
-        <stop offset="100%" stopColor={"#ff7f00"} stopOpacity={0.01} />
-      </linearGradient> */}
+
+            <linearGradient id="hot" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0%" stopColor={"#ff0000"} stopOpacity={0.4} />
+              <stop offset="100%" stopColor={"#ff7f00"} stopOpacity={0.01} />
+            </linearGradient>
           </defs>
-          <Bar dataKey="high" fill="url(#warm)" />
+          <Bar dataKey="high" fill="url(#warm)">
+            {data.map((entry, index) => (
+              <Cell
+                fill={`url(#${getTempColor(data[index].high, isFahrenheit)})`}
+              />
+            ))}
+          </Bar>
           <XAxis
             dataKey="day"
             stroke="#bbbbbb"

@@ -1,7 +1,6 @@
 import { TempGraphProps } from "@/lib/types";
 import {
   averageTemperature,
-  fahrenheitArray,
   getGradientColors,
 } from "@/lib/utils";
 import React from "react";
@@ -17,9 +16,8 @@ import {
 
 const TemperatureGraph: React.FC<TempGraphProps> = ({ data, isFahrenheit }) => {
   const [startColor, endColor] = getGradientColors(
+    averageTemperature(data),
     isFahrenheit
-      ? averageTemperature(data)
-      : averageTemperature(fahrenheitArray(data))
   );
 
   return (
@@ -42,7 +40,7 @@ const TemperatureGraph: React.FC<TempGraphProps> = ({ data, isFahrenheit }) => {
             dataKey="hour"
             stroke="#bbbbbb"
             tickLine={false}
-            tick={{ transform: "translate(0, 5)"}}
+            tick={{ transform: "translate(0, 5)" }}
             tickFormatter={(time) => {
               return `${parseInt(time)}`;
             }}

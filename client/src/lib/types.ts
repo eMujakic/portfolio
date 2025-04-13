@@ -1,5 +1,5 @@
 export interface WeatherInterface {
-  hour: number| string;
+  hour: number | string;
   temperature: number;
   humidity: number;
 }
@@ -14,11 +14,9 @@ export interface NavbarProps {
   menuOpen: boolean;
   setMenuOpen: (open: boolean) => void;
 }
-;
-
 export interface TempGraphProps {
-    data: WeatherInterface[];
-    isFahrenheit: boolean;
+  data: WeatherInterface[];
+  isFahrenheit: boolean;
 }
 
 export interface WeekGraphProps {

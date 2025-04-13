@@ -6,10 +6,22 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export const getGradientColors = (temperature: number) => {
+export const getGradientColors = (temperature: number, isFahrenheit: boolean) => {
+  if (!isFahrenheit) {
+    temperature = convertToFahrenheit(temperature);
+  }
   if (temperature < 50) return ["#22b4ff", "#2451B7"];
-  if (temperature < 80) return ["#ff7c00", "#ffaa00"];
+  if (temperature < 90) return ["#ff7c00", "#ffaa00"];
   return ["#ff0000", "#ff7f00"]; // Hot colors
+};
+
+export const getTempColor = (temperature: number, isFahrenheit: boolean) => {
+  if (!isFahrenheit) {
+    temperature = convertToFahrenheit(temperature);
+  }
+  if (temperature < 50) return "cold";
+  if (temperature < 90) return "warm";
+  return "hot";
 };
 
 export const averageTemperature = (data: WeatherInterface[]) => {
@@ -44,13 +56,6 @@ export const celsiusDayArray = (tempData: DayInterface[]): DayInterface[] => {
     ...data,
     high: convertToCelsius(data.high),
     low: convertToCelsius(data.low),
-  }))
-};
-
-export const fahrenheitArray = (tempData: WeatherInterface[]): WeatherInterface[] => {
-  return tempData.map((data) => ({
-    ...data,
-    temperature: convertToFahrenheit (data.temperature)
   }))
 };
 
