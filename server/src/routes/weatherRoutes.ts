@@ -1,6 +1,7 @@
 import express from "express";
 import { getDayWeather, getWeather, postWeather } from "../controllers/WeatherController";
 import rateLimit from 'express-rate-limit';
+import { authMiddleware } from "../middleware/authMiddleware";
 
 const postLimiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 60 minutes
@@ -12,7 +13,7 @@ const postLimiter = rateLimit({
 
 const router = express.Router();
 
-router.post("/", postLimiter, postWeather)
+router.post("/", postLimiter, authMiddleware,  postWeather)
 router.get("/", getWeather);
 router.get("/day", getDayWeather);
 
