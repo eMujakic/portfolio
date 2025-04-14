@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { containerVariants } from "@/lib/utils";
-// import emailjs from "emailjs/browser/emailjs";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,19 +11,35 @@ const Contact = () => {
     email: "",
     message: "",
   });
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     emailjs
-//       .sendForm(import.meta.env.VITE_SERVICE_ID, import.meta.env.VITE_TEMPLATE_ID, e.target, import.meta.env.VITE_PUBLIC_KEY)
-//       .then((result) => {
-//         alert("Messsage Sent!");
-//         setFormData({ name: "", email: "", message: "" });
-//       })
-//       .catch((err) => {
-//         alert("Something went wrong, please try again.");
-//       });
-//   };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitStatus("idle");
+    console.log(process.env.NEXT_PUBLIC_SERVICE_ID);
+    try {
+      if (
+        process.env.NEXT_PUBLIC_SERVICE_ID &&
+        process.env.NEXT_PUBLIC_TEMPLATE_ID &&
+        process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY
+      ) {
+        const result = await emailjs.sendForm(
+          process.env.NEXT_PUBLIC_SERVICE_ID,
+          process.env.NEXT_PUBLIC_TEMPLATE_ID,
+          e.currentTarget,
+          process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY
+        );
+        console.log("Email sent successfully!", result);
+        setFormData({ name: "", email: "", message: "" });
+        setSubmitStatus("success");
+      }
+    } catch (error) {
+      console.error("Failed to send email:", error);
+      setSubmitStatus("error");
+    }
+  };
 
   return (
     <section
@@ -31,14 +47,14 @@ const Contact = () => {
       className="min-h-[80vh] md:min-h-screen flex items-center justify-center"
     >
       <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.4 }}
-      variants={containerVariants}
-    >
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.4 }}
+        variants={containerVariants}
+      >
         <div className="px-4 w-full min-w-[375px] md:w-[500px] sm:w-2/3 p-6">
           <h2 className="section-heading">Get In Touch</h2>
-          <form action="" className="space-y-6">
+          <form action="" id="" className="space-y-6" onSubmit={handleSubmit}>
             <div className="relative bg-[#0f0f0f]">
               <input
                 type="text"
@@ -69,7 +85,7 @@ const Contact = () => {
             </div>
             <div className="relative custom-scrollbar bg-[#0f0f0f]">
               <textarea
-                name=""
+                name="message"
                 id="message"
                 required
                 value={formData.message}
@@ -81,10 +97,19 @@ const Contact = () => {
                 }
               ></textarea>
             </div>
-
+            {submitStatus === "success" && (
+              <div className="mb-6 p-4 bg-green-100 text-green-700 rounded-lg text-center">
+                Message sent successfully!
+              </div>
+            )}
+            {submitStatus === "error" && (
+              <div className="mb-6 p-4 bg-red-100 text-red-700 rounded-lg text-center">
+                Failed to send message. Please try again.
+              </div>
+            )}
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white py-3 px-6 rounded
+              className="w-full bg-blue-500 text-white py-3 px-6 rounded-2xl
                          font-medium transtion relative overflow-hidden
                          hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,.4)] cursor-pointer"
             >
@@ -92,7 +117,7 @@ const Contact = () => {
             </button>
           </form>
         </div>
-        </motion.div>
+      </motion.div>
     </section>
   );
 };

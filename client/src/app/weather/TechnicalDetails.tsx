@@ -29,9 +29,8 @@ const TechnicalDetails = () => {
           <p className="text-gray-300 mb-4 text-center md:text-left text-lg">
           This IoT project leverages an ESP32 microcontroller to gather temperature and humidity data,
           which is transmitted to a RESTful API developed with Node.js and Express.js. To enhance power efficiency,
-          the ESP32 enters sleep mode when not actively collecting data, significantly reducing energy consumption.
-          The backend is powered by DynamoDB for efficient data storage and management,
-          while AWS Lambda provides a scalable deployment environment.
+          features such as sleep mode are implemented when not actively collecting data, significantly reducing energy consumption.
+          AWS EC2 provides a scalable and highly customizable deployment environment.
           Recharts is utilized for dynamic data visualization,
           enabling users to view real-time metrics through interactive charts.
           The architecture supports modularity and scalability,
@@ -43,7 +42,7 @@ const TechnicalDetails = () => {
               "React",
               "Node.js",
               "AWS",
-              "DynamoDB",
+              // "DynamoDB",
               "TypeScript",
               "Recharts",
               "ESP32", "PlatformIO"

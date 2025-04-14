@@ -25,10 +25,11 @@ const Overview = () => {
       >
         <h1 className="section-heading">Project Overview</h1>
         <p className="text-center text-lg mb-4 md:mb-2">
-        A comprehensive Internet of Things (IoT) solution was developed to monitor temperature and humidity levels.
-        This project utilized an ESP32 device to collect data from sensors and transmit it to a web application.
-        A user-friendly interface was created to display real-time environmental metrics,
-        making it easy for users to access the information.
+          A comprehensive Internet of Things (IoT) solution was developed to
+          monitor temperature and humidity levels. A microcontroller is used to
+          collect data from sensors and transmit it to a web application. A
+          user-friendly interface was created to display real-time environmental
+          metrics, making it easy for users to access the information.
         </p>
         <div className="p-0 md:p-6 mt-2">
           <Carousel
@@ -38,15 +39,15 @@ const Overview = () => {
             className=""
           >
             <CarouselContent className="">
-              <CarouselItem className="">
-                <img src="/placeholder.jpg" alt="" className="slider-img" />
-              </CarouselItem>
-              <CarouselItem className="">
-                <img src="/placeholder.jpg" alt="" className="slider-img" />
-              </CarouselItem>
-              <CarouselItem className="">
-                <img src="/placeholder.jpg" alt="" className="slider-img" />
-              </CarouselItem>
+              {[
+                "/placeholder.jpg",
+                "/placeholder.jpg",
+                "/placeholder.jpg",
+              ].map((src, key) => (
+                <CarouselItem  key={key}>
+                  <img src={src} alt="image of weather station junction box" className="slider-img" />
+                </CarouselItem>
+              ))}
             </CarouselContent>
             <div className="">
               <CarouselPrevious className="slider-button" />

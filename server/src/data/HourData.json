@@ -1,27 +1,27 @@
 [
   {
-    "temperature": 74,
-    "humidity": 55,
-    "hour": 15
+    "temperature": 75.92,
+    "humidity": 46.7,
+    "hour": 18
+  },
+  {
+    "temperature": 77.18,
+    "humidity": 45.3,
+    "hour": 19
   },
   {
     "temperature": 75,
     "humidity": 52,
-    "hour": 16
+    "hour": 20
   },
   {
-    "temperature": 75.02,
-    "humidity": 53.1,
-    "hour": 17
+    "temperature": 75.38,
+    "humidity": 57.5,
+    "hour": 7
   },
   {
-    "temperature": 74.84,
-    "humidity": 52,
-    "hour": 18
-  },
-  {
-    "temperature": 74.84,
-    "humidity": 51.6,
-    "hour": 19
+    "temperature": 77,
+    "humidity": 54.3,
+    "hour": 8
   }
 ]

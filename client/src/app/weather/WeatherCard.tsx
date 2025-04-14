@@ -10,9 +10,8 @@ import TemperatureGraph from "./TemperatureChart";
 import {
   celsiusArray,
   celsiusDayArray,
-  celsiusFormat,
   containerVariants,
-  convertHourTo12HourFormat,
+  twelveHrFormat,
   convertToCelsius,
   getDayAbbreviation,
   runAtNextDay,
@@ -21,72 +20,96 @@ import {
 import WeekChart from "./WeekChart";
 import { Separator } from "@/components/ui/separator";
 import SunCalc from "suncalc";
-
-
+import { coordinates, timezone } from "@/lib/consts";
 
 const WeatherCard = () => {
+  //weather, day, and temp format states
   const [weatherData, setWeatherData] = useState<WeatherInterface[]>([]);
   const [dayData, setDayData] = useState<DayInterface[]>([]);
-  const timeZone = "America/Chicago";
+  const [isFahrenheit, setIsFahrenheit] = useState(true);
+
+  //zoned date and time
+  const timeZone = timezone;
   const date = new Date();
   const zonedDate = toZonedTime(date, timeZone);
   const time = format(zonedDate, "h:mm a", { timeZone });
   const day = format(zonedDate, "EEEE", { timeZone });
 
-  const sun = SunCalc.getTimes(new Date(), 32, -96);
+  //zoned sunset and sunrise time
+  const sun = SunCalc.getTimes(new Date(), coordinates.long, coordinates.lat);
   const sunrise = toZonedTime(sun.sunrise, timeZone);
   const sunset = toZonedTime(sun.sunset, timeZone);
 
-  const [isFahrenheit, setIsFahrenheit] = useState(true);
-
+  //set fahrenheit on click functions
   const setFahrenheit = () => {
     setIsFahrenheit(true);
   };
-
   const setCelsius = () => {
     setIsFahrenheit(false);
   };
 
+  //fetch hour data
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios.get("http://localhost:3005/api/weather");
-      const newData = result.data.map(
-        (data: WeatherInterface): WeatherInterface => ({
-          ...data,
-          hour: convertHourTo12HourFormat(Number(data.hour)),
-        })
-      );
-      setWeatherData(newData);
-    };
-    fetchData();
+    let timeout: NodeJS.Timeout;
     let interval: NodeJS.Timeout;
-    const timeout = setTimeout(() => {
+
+    const fetchData = async () => {
+      try {
+        const result = await axios.get(process.env.NEXT_PUBLIC_API_WEATHER_URL ? process.env.NEXT_PUBLIC_API_WEATHER_URL : "");
+        const newData = result.data.map(
+          (data: WeatherInterface): WeatherInterface => ({
+            ...data,
+            hour: twelveHrFormat(Number(data.hour)),
+          })
+        );
+        setWeatherData(newData);
+      } catch (error) {
+        console.error("Error fetching weather data:", error);
+      }
+    };
+
+    // Initial fetch
+    fetchData();
+
+    // Schedule hourly updates
+    timeout = setTimeout(() => {
       fetchData();
-      interval = setInterval(fetchData, 3600000); // Every hour
+      interval = setInterval(fetchData, 3600000);
     }, runAtNextHour());
+
     return () => {
       clearTimeout(timeout);
       clearInterval(interval);
     };
   }, []);
 
+  //fetch day data
   useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    let interval: NodeJS.Timeout;
+
     const fetchData = async () => {
-      const result = await axios.get("http://localhost:3005/api/weather/day");
-      const newData = result.data.map(
-        (data: DayInterface): DayInterface => ({
+      try {
+        const result = await axios.get(process.env.NEXT_PUBLIC_API_DAY_URL ? process.env.NEXT_PUBLIC_API_DAY_URL : "");
+        const newData = result.data.map((data: DayInterface) => ({
           ...data,
           day: getDayAbbreviation(Number(data.day)),
-        })
-      );
-      setDayData(newData);
+        }));
+        setDayData(newData);
+      } catch (error) {
+        console.error("Failed to fetch weather data:", error);
+      }
     };
+
+    // Initial fetch
     fetchData();
-    let interval: NodeJS.Timeout;
-    const timeout = setTimeout(() => {
+
+    // Schedule daily updates
+    timeout = setTimeout(() => {
       fetchData();
       interval = setInterval(fetchData, 86400000); // Every day
     }, runAtNextDay());
+
     return () => {
       clearTimeout(timeout);
       clearInterval(interval);
@@ -118,7 +141,7 @@ const WeatherCard = () => {
               {weatherData.length > 0
                 ? isFahrenheit
                   ? weatherData[weatherData.length - 1].temperature.toFixed(0)
-                  : celsiusFormat(
+                  : convertToCelsius(
                       weatherData[weatherData.length - 1].temperature
                     )
                 : "..."}

@@ -32,7 +32,7 @@ const postWeather = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         }
         const { temperature, humidity } = req.body;
         // validates data types
-        if (isNaN(temperature) || isNaN(humidity)) {
+        if (typeof temperature !== "number" || typeof humidity !== "number") {
             res
                 .status(400)
                 .json({ message: "Invalid temperature or humidity value." });
@@ -97,6 +97,7 @@ const postWeather = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             yield (0, util_1.writeJsonFile)(consts_1.dayFilePath, dayData);
             yield (0, util_1.writeJsonFile)(consts_1.hourFilePath, hourData);
         }));
+        res.status(200).json(weatherEntry);
     }
     catch (err) {
         console.log(err);

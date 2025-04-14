@@ -15,6 +15,7 @@ import {
   maxTemp,
   minTemp,
 } from "../lib/consts";
+import { json } from "body-parser";
 
 //arrays storing incoming data
 let hourData: HourInterface[] = [];
@@ -43,7 +44,7 @@ export const postWeather = async (
     const { temperature, humidity } = req.body;
 
     // validates data types
-    if (isNaN(temperature) || isNaN(humidity)) {
+    if (typeof temperature !== "number" || typeof humidity !== "number") {
       res
         .status(400)
         .json({ message: "Invalid temperature or humidity value." });
@@ -113,6 +114,8 @@ export const postWeather = async (
       await writeJsonFile(dayFilePath, dayData);
       await writeJsonFile(hourFilePath, hourData);
     });
+
+    res.status(200).json(weatherEntry);
   } catch (err: any) {
     console.log(err);
     res

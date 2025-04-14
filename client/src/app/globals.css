@@ -223,16 +223,16 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gradient-to-t from-purple-700 to-orange-700;
+  @apply bg-gradient-to-t from-purple-700 to-[#0f0f0f];
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gradient-to-t from-purple-900 to-orange-900;
+  @apply bg-gradient-to-t from-purple-900 to-[#0f0f0f];
 }
 
 /* For Firefox */
 body {
   scrollbar-width: thin;
-  scrollbar-color: #888 #f1f1f1;
+  @apply bg-gradient-to-t from-purple-900 to-[#0f0f0f]
 }

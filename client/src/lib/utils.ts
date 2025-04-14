@@ -33,15 +33,11 @@ export const averageTemperature = (data: WeatherInterface[]) => {
 };
 
 export const convertToCelsius = (temp: number) => {
-  return ((temp - 32) * 5) / 9;
+  return Math.floor(((temp - 32) * 5) / 9);
 };
 
 export const convertToFahrenheit  = (temp: number) => {
   return ((temp * (9 / 5)) + 32);
-};
-
-export const celsiusFormat = (temp: number): String => {
-  return (((temp - 32) * 5) / 9).toFixed(0);
 };
 
 export const celsiusArray = (tempData: WeatherInterface[]): WeatherInterface[] => {
@@ -127,7 +123,7 @@ export const runAtNextDay = () => {
   return nextHour.getTime() + 300000 - now.getTime();
 };
 
-export function convertHourTo12HourFormat(hour: number): string {
+export function twelveHrFormat(hour: number): string {
   let period = 'AM';
   let convertedHour = hour;
 
