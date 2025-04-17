@@ -14,6 +14,7 @@ const About = () => {
     "TailwindCSS",
     "Typescript",
     "Recharts",
+    "Redux",
   ];
 
   const backendSkills = [

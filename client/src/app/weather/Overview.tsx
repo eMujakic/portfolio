@@ -40,9 +40,9 @@ const Overview = () => {
           >
             <CarouselContent className="">
               {[
-                "/placeholder.jpg",
-                "/placeholder.jpg",
-                "/placeholder.jpg",
+                "/junction_box_1.jpg",
+                "/junction_box_2.jpg",
+                "/junction_box_3.jpg",
               ].map((src, key) => (
                 <CarouselItem  key={key}>
                   <img src={src} alt="image of weather station junction box" className="slider-img" />

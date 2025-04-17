@@ -38,8 +38,9 @@ const Projects = () => {
               </p>
               <div className="flex flex-wrap gap-2 mb-4 justify-center md:justify-start">
                 {[
-                  "AWS",
-                  "Amplify",
+                  "AWS Amplify",
+                  "EC2",
+                  "S3",
                   "AWS Cognito",
                   "Typescript",
                   "Node.js",
@@ -47,6 +48,7 @@ const Projects = () => {
                   "PostgreSQL",
                   "Next.js",
                   "React",
+                  "Redux",
                 ].map((tech, key) => (
                   <span key={key} className="tech-icon">
                     {tech}
@@ -83,8 +85,8 @@ const Projects = () => {
                   "C++",
                   "React",
                   "Node.js",
-                  "AWS",
-                  "DynamoDB",
+                  "AWS Amplify",
+                  "EC2",
                   "TypeScript",
                   "Recharts",
                   "ESP32",

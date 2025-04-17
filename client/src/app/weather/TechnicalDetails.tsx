@@ -41,11 +41,13 @@ const TechnicalDetails = () => {
               "C++",
               "React",
               "Node.js",
-              "AWS",
-              // "DynamoDB",
+              "AWS Amplify",
+              "EC2",
+              "S3",
               "TypeScript",
               "Recharts",
-              "ESP32", "PlatformIO"
+              "ESP32",
+              "PlatformIO",
             ].map((tech, key) => (
               <span key={key} className="tech-icon">
                 {tech}

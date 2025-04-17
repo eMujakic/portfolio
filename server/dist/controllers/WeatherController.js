@@ -28,6 +28,7 @@ const postWeather = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             res.status(415).json({
                 message: "Unsupported Media Type. Expected application/json.",
             });
+            console.log("Unsupported Media Type. Expected application/json.");
             return;
         }
         const { temperature, humidity } = req.body;
@@ -35,7 +36,8 @@ const postWeather = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         if (typeof temperature !== "number" || typeof humidity !== "number") {
             res
                 .status(400)
-                .json({ message: "Invalid temperature or humidity value." });
+                .json({ message: "Invalid temperature or humidity data type." });
+            console.log("Invalid temperature or humidity data type.");
             return;
         }
         // validates data values
@@ -46,6 +48,7 @@ const postWeather = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             res
                 .status(400)
                 .json({ message: "Invalid temperature or humidity value." });
+            console.log("Invalid temperature or humidity value.");
             return;
         }
         //get current zoned date
@@ -55,6 +58,7 @@ const postWeather = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         //prevents duplicate hours
         if (hourData.some((data) => data.hour === hour)) {
             res.status(409).json({ message: "data already gathered for this hour." });
+            console.log("data already gathered for this hour.");
             return;
         }
         // assigns incoming data to variable
@@ -97,6 +101,7 @@ const postWeather = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             yield (0, util_1.writeJsonFile)(consts_1.dayFilePath, dayData);
             yield (0, util_1.writeJsonFile)(consts_1.hourFilePath, hourData);
         }));
+        console.log(now.getTime(), weatherEntry);
         res.status(200).json(weatherEntry);
     }
     catch (err) {

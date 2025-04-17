@@ -7,6 +7,7 @@ const authMiddleware = (req, res, next) => {
         // Ensure apiKey is a string and check if it matches the expected API key
         if (typeof apiKey !== "string" || apiKey !== process.env.API_KEY) {
             res.status(403).json({ message: "Forbidden: Invalid API Key" });
+            console.log("Forbidden: Invalid API Key");
             return;
         }
     }
@@ -15,6 +16,7 @@ const authMiddleware = (req, res, next) => {
         res
             .status(500)
             .json({ message: "Internal Server Error: API Key not configured." });
+        console.log("Internal Server Error: API Key not configured.");
         return;
     }
     next();

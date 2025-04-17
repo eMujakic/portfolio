@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const WeatherController_1 = require("../controllers/WeatherController");
 const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
 const authMiddleware_1 = require("../middleware/authMiddleware");
+const cors_1 = __importDefault(require("cors"));
 const postLimiter = (0, express_rate_limit_1.default)({
     windowMs: 60 * 60 * 1000, // 60 minutes
     max: 10, // 100 requests per windowMs
@@ -14,8 +15,12 @@ const postLimiter = (0, express_rate_limit_1.default)({
     standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
+const corsOptions = {
+    origin: process.env.CLIENT_URL, // Allow only this origin
+    methods: 'GET,HEAD', // Allow only GET and HEAD methods
+};
 const router = express_1.default.Router();
 router.post("/", postLimiter, authMiddleware_1.authMiddleware, WeatherController_1.postWeather);
-router.get("/", WeatherController_1.getWeather);
-router.get("/day", WeatherController_1.getDayWeather);
+router.get("/", (0, cors_1.default)(corsOptions), WeatherController_1.getWeather);
+router.get("/day", (0, cors_1.default)(corsOptions), WeatherController_1.getDayWeather);
 exports.default = router;

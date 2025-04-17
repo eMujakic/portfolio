@@ -38,6 +38,7 @@ export const postWeather = async (
       res.status(415).json({
         message: "Unsupported Media Type. Expected application/json.",
       });
+      console.log("Unsupported Media Type. Expected application/json.");
       return;
     }
 
@@ -47,7 +48,8 @@ export const postWeather = async (
     if (typeof temperature !== "number" || typeof humidity !== "number") {
       res
         .status(400)
-        .json({ message: "Invalid temperature or humidity value." });
+        .json({ message: "Invalid temperature or humidity data type." });
+      console.log("Invalid temperature or humidity data type.");
       return;
     }
 
@@ -61,6 +63,7 @@ export const postWeather = async (
       res
         .status(400)
         .json({ message: "Invalid temperature or humidity value." });
+      console.log("Invalid temperature or humidity value.");
       return;
     }
 
@@ -72,6 +75,7 @@ export const postWeather = async (
     //prevents duplicate hours
     if (hourData.some((data) => data.hour === hour)) {
       res.status(409).json({ message: "data already gathered for this hour." });
+      console.log("data already gathered for this hour.");
       return;
     }
 
@@ -115,6 +119,7 @@ export const postWeather = async (
       await writeJsonFile(hourFilePath, hourData);
     });
 
+    console.log(now.getTime(), weatherEntry);
     res.status(200).json(weatherEntry);
   } catch (err: any) {
     console.log(err);
