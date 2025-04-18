@@ -59,6 +59,7 @@ const Projects = () => {
               <div className="flex justify-between items-center">
                 <a
                   href="https://main.d23vconw9vey1v.amplifyapp.com/"
+                  target="_blank"
                   className="text-blue-400 hover:text-blue-200 transition-colors my-4 mx-auto md:mx-0"
                 >
                   View Project ➡

@@ -19,7 +19,6 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitStatus("idle");
-    console.log(process.env.NEXT_PUBLIC_SERVICE_ID);
     try {
       if (
         process.env.NEXT_PUBLIC_SERVICE_ID &&

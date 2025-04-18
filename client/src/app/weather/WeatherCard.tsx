@@ -90,7 +90,7 @@ const WeatherCard = () => {
 
     const fetchData = async () => {
       try {
-        const result = await axios.get(process.env.NEXT_PUBLIC_API_DAY_URL ? process.env.NEXT_PUBLIC_API_DAY_URL : "");
+        const result = await axios.get(process.env.NEXT_PUBLIC_API_WEATHER_URL ? `${process.env.NEXT_PUBLIC_API_WEATHER_URL}/day` : "");
         const newData = result.data.map((data: DayInterface) => ({
           ...data,
           day: getDayAbbreviation(Number(data.day)),
