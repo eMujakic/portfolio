@@ -36,7 +36,7 @@ const TechnicalDetails = () => {
           The architecture supports modularity and scalability,
           making it adaptable for future enhancements and additional sensor integrations.
           </p>
-          <div className="flex flex-wrap gap-2 mb-4">
+          <div className="flex flex-wrap gap-2 mb-4 justify-center md:justify-start">
             {[
               "C++",
               "React",
