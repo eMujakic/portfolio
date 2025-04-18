@@ -25,6 +25,7 @@
 .DS_Store
 *.pem
 /src/data/
+/dist/data/
 
 # debug
 npm-debug.log*
