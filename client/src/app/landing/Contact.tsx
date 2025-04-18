@@ -18,27 +18,32 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitStatus("idle");
+
+    if (
+        !process.env.NEXT_PUBLIC_SERVICE_ID ||
+        !process.env.NEXT_PUBLIC_TEMPLATE_ID ||
+        !process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY
+    ) {
+        console.error("Missing environment variables");
+        setSubmitStatus("error");
+        return;
+    }
+
     try {
-      if (
-        process.env.NEXT_PUBLIC_SERVICE_ID &&
-        process.env.NEXT_PUBLIC_TEMPLATE_ID &&
-        process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY
-      ) {
         const result = await emailjs.sendForm(
-          process.env.NEXT_PUBLIC_SERVICE_ID,
-          process.env.NEXT_PUBLIC_TEMPLATE_ID,
-          e.currentTarget,
-          process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY
+            process.env.NEXT_PUBLIC_SERVICE_ID,
+            process.env.NEXT_PUBLIC_TEMPLATE_ID,
+            e.currentTarget,
+            process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY
         );
         console.log("Email sent successfully!", result);
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", message: "" }); // Reset form data
         setSubmitStatus("success");
-      }
     } catch (error) {
-      console.error("Failed to send email:", error);
-      setSubmitStatus("error");
+        console.error("Failed to send email:", error);
+        setSubmitStatus("error");
     }
-  };
+};
 
   return (
     <section
