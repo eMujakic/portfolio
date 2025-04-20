@@ -72,12 +72,12 @@ export const postWeather = async (
     const hour = now.getHours();
     const day = now.getDay();
 
-    //prevents duplicate hours
-    if (hourData.some((data) => data.hour === hour)) {
-      res.status(409).json({ message: "data already gathered for this hour." });
-      console.log("data already gathered for this hour.");
-      return;
-    }
+    // //prevents duplicate hours
+    // if (hourData[hourData.length - 1].hour === hour) {
+    //   res.status(409).json({ message: "data already gathered for this hour." });
+    //   console.log("data already gathered for this hour.");
+    //   return;
+    // }
 
     // assigns incoming data to variable
     const weatherEntry = {
@@ -111,8 +111,14 @@ export const postWeather = async (
       }
     }
     //limits weather data to 5 entries
-    if (hourData.length >= hourMaxLength) hourData.shift();
-    hourData.push(weatherEntry);
+    if (hourData[hourData.length - 1].hour !== hour) {
+      if (hourData.length >= hourMaxLength) hourData.shift();
+
+      hourData.push(weatherEntry);
+    } else {
+      hourData[hourData.length - 1].temperature = weatherEntry.temperature; // Updates current hour data
+      hourData[hourData.length - 1].humidity = weatherEntry.humidity;
+    }
 
     await fileWriteQueue.enqueue(async () => {
       await writeJsonFile(dayFilePath, dayData);

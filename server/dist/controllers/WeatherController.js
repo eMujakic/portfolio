@@ -55,12 +55,12 @@ const postWeather = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         const now = (0, date_fns_tz_1.toZonedTime)(new Date(), timeZone);
         const hour = now.getHours();
         const day = now.getDay();
-        //prevents duplicate hours
-        if (hourData.some((data) => data.hour === hour)) {
-            res.status(409).json({ message: "data already gathered for this hour." });
-            console.log("data already gathered for this hour.");
-            return;
-        }
+        // //prevents duplicate hours
+        // if (hourData[hourData.length - 1].hour === hour) {
+        //   res.status(409).json({ message: "data already gathered for this hour." });
+        //   console.log("data already gathered for this hour.");
+        //   return;
+        // }
         // assigns incoming data to variable
         const weatherEntry = {
             temperature,
@@ -94,9 +94,15 @@ const postWeather = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             }
         }
         //limits weather data to 5 entries
-        if (hourData.length >= consts_1.hourMaxLength)
-            hourData.shift();
-        hourData.push(weatherEntry);
+        if (hourData[hourData.length - 1].hour !== hour) {
+            if (hourData.length >= consts_1.hourMaxLength)
+                hourData.shift();
+            hourData.push(weatherEntry);
+        }
+        else {
+            hourData[hourData.length - 1].temperature = weatherEntry.temperature; // Updates current hour data
+            hourData[hourData.length - 1].humidity = weatherEntry.humidity;
+        }
         yield util_1.fileWriteQueue.enqueue(() => __awaiter(void 0, void 0, void 0, function* () {
             yield (0, util_1.writeJsonFile)(consts_1.dayFilePath, dayData);
             yield (0, util_1.writeJsonFile)(consts_1.hourFilePath, hourData);
