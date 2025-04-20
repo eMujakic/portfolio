@@ -9,7 +9,7 @@ const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
 const authMiddleware_1 = require("../middleware/authMiddleware");
 const postLimiter = (0, express_rate_limit_1.default)({
     windowMs: 60 * 60 * 1000, // 60 minutes
-    max: 10, // 100 requests per windowMs
+    max: 25, // 100 requests per windowMs
     message: 'Too many requests from this device, please try again later',
     standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
