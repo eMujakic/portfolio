@@ -53,7 +53,10 @@ const TemperatureGraph: React.FC<TempGraphProps> = ({ data, isFahrenheit }) => {
               return `${int}°F`;
             }}
             width={4}
-            domain={['auto', 'auto']}
+            domain={[
+              (dataMin: number) => dataMin - 4, 
+              (dataMax: number) => dataMax
+            ]} 
             scale="linear"
           ></YAxis>
           <Tooltip content={<CustomTooltip />} />
