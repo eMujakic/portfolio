@@ -53,6 +53,8 @@ const TemperatureGraph: React.FC<TempGraphProps> = ({ data, isFahrenheit }) => {
               return `${int}°F`;
             }}
             width={4}
+            domain={['auto', 'auto']}
+            scale="linear"
           ></YAxis>
           <Tooltip content={<CustomTooltip />} />
         </AreaChart>
