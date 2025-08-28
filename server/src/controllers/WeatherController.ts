@@ -87,7 +87,7 @@ export const postWeather = async (
     };
 
     // intializes day entry if midnight
-    if (hour === 0) {
+    if (hour === 0 && !dayData.find((data) => data.day === day)) {
       const dayEntry = {
         day: day,
         high: temperature,

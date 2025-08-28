@@ -9,6 +9,7 @@ import {
   Tooltip,
   TooltipProps,
   Cell,
+  YAxis,
 } from "recharts";
 
 const WeekChart: React.FC<WeekGraphProps> = ({ data, isFahrenheit }) => {
@@ -45,6 +46,20 @@ const WeekChart: React.FC<WeekGraphProps> = ({ data, isFahrenheit }) => {
             tickLine={false}
             tick={{ transform: "translate(0, 3)" }}
           />
+          <YAxis
+                      stroke="#bbbbbb"
+                      tickLine={false}
+                      tick={false}
+                      tickFormatter={(int) => {
+                        return `${int}°F`;
+                      }}
+                      width={0}
+                      domain={[
+                        (dataMin: number) => dataMin - 6, 
+                        (dataMax: number) => dataMax
+                      ]} 
+                      scale="linear"
+                    ></YAxis>
           <Tooltip content={<CustomTooltip />} cursor={{ fillOpacity: 0.04 }} />
         </BarChart>
       </ResponsiveContainer>
