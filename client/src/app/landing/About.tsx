@@ -88,11 +88,11 @@ const About = () => {
               <ul className="list-item list-inside text-gray-300 space-y-3">
                 <li>
                   <strong>B.S. in Computer Science</strong> - Western Governors
-                  Unviersity (2024 - Current)
+                  Unviersity, August 2025
                 </li>
                 <li>
-                  <i>Releveant Coursework</i>: Data Structures,
-                  Software Engineering, Cloud Computing...
+                  <i>Releveant Coursework</i>: Data Structures and Algorithms, Artificial Intelligence,
+                  Computer Architecture...
                 </li>
                 <br />
                 <h4 className="text-xl font-bold mb-4">📜 Certifications</h4>

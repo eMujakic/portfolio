@@ -3,6 +3,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { containerVariants } from "@/lib/utils";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
+
 
 const Home = () => {
   return (
@@ -42,6 +45,11 @@ const Home = () => {
             >
               Contact Me
             </a>
+          </div>
+            <div className="mt-8 flex justify-evenly">
+            <a href="https://github.com/eMujakic" target="_blank"><FaGithub size={28}/></a>
+            <a href="https://www.linkedin.com/in/ernad-mujakic-a13085362/" target="_blank"><FaLinkedin size={28}/></a>
+            <a href="https://leetcode.com/u/ElRepjxna4/" target="_blank"><SiLeetcode size={28}/></a>
           </div>
         </div>
       </motion.div>{" "}
