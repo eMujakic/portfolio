@@ -25,10 +25,9 @@ const Home = () => {
           </h1>
 
           <p className="text-gray-300 text-lg mb-8 max-w-lg mx-auto">
-            Welcome to My Portfolio! I am a passionate software engineer
-            dedicated to building innovative solutions that solve real-world
-            problems. Explore my portfolio to see examples of my work and the
-            impact I can bring to your team.
+            As an embedded engineer, I specialize in designing and 
+            implementing efficient firmware and hardware solutions for a range of applications.
+            Explore my portfolio to discover examples of my work and the impact I can make on your team.
           </p>
 
           <div className="flex justify-center space-x-4">

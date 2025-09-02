@@ -18,22 +18,25 @@ const About = () => {
   ];
 
   const backendSkills = [
-    "Python",
     "C & C++",
-    "JavaScript / Typescript",
-    // "AI & Machine Learning",
-    "MySQL & PostgreSQL",
-    "MongoDB",
-    "Node.js & Express.js",
-    "Django",
-    "Spring Boot",
+    "Python",
+    "RTOS",
+    "Artificial Intelligence",
+    "Microcontrollers",
+    "Circuit Design & Analysis",
+    "Hardware Interface Protocols",
     "Linux",
+    "Risc-V & ARM Architectures",
+    "CAD Software",
+    "Machine Learning",
     "Git",
-    "AWS",
+    "Test-Driven Development",
+    // "MySQL & PostgreSQL",
+    // "AWS",
     // "Docker",
     "RESTful APIs",
     "Agile & Scrum Methodologies",
-    "Java",
+    // "Java",
   ];
 
   return (
@@ -52,14 +55,13 @@ const About = () => {
 
           <div className="rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all bg-[#0f0f0f]">
             <p className="text-gray-200 mb-6 md:text-lg">
-              Detail-oriented Computer Science student with a strong foundation
-              in software development principles and a keen interest in creating
-              innovative applications. Committed to applying analytical skills
+              I'm a computer systems student with hands-on experience in developing firmware for
+              microcontrollers and integrating sensors into IoT devices. Committed to applying analytical skills
               and technical knowledge to contribute to impactful projects.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="rounded-xl p-6 hover:-translate-y-1 transition-all">
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+              {/* <div className="rounded-xl p-6 hover:-translate-y-1 transition-all">
                 <h3 className="text-xl font-bold mb-4">Frontend</h3>
                 <div className="flex flex-wrap gap-2 justify-center md:justify-start">
                   {frontendSkills.map((tech, key) => (
@@ -68,9 +70,9 @@ const About = () => {
                     </span>
                   ))}
                 </div>
-              </div>
+              </div> */}
               <div className="rounded-xl p-6 hover:-translate-y-1 transition-all">
-                <h3 className="text-xl font-bold mb-4">Backend</h3>
+                <h2 className="text-2xl font-bold mb-4 text-center">Skills</h2>
                 <div className="flex flex-wrap gap-2 justify-center md:justify-start">
                   {backendSkills.map((tech, key) => (
                     <span key={key} className="tech-icon">
@@ -94,17 +96,21 @@ const About = () => {
                   <i>Releveant Coursework</i>: Data Structures and Algorithms, Artificial Intelligence,
                   Computer Architecture...
                 </li>
+                {/* <li>
+                  <strong>M.S. in Computer Science</strong> - Georgia Institute of Technology,
+                   Expected December 2027
+                </li> */}
                 <br />
                 <h4 className="text-xl font-bold mb-4">📜 Certifications</h4>
+                <li>
+                  <strong>Linux Essentials</strong>- Linux Professional
+                  Insititute (LPI) - February 2025
+                </li>
                 <li>
                   <strong>
                     ITIL Foundation Certificate in IT Service Management
                   </strong>
                   - PeopleCert - February 2025
-                </li>
-                <li>
-                  <strong>Linux Essentials</strong>- Linux Professional
-                  Insititute (LPI) - February 2025
                 </li>
               </ul>
             </div>

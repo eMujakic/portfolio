@@ -27,23 +27,27 @@ const TechnicalDetails = () => {
           >
             <h3 className="text-xl font-bold mb-2 text-center">Temperature and Humidity Monitoring System</h3>
             <p className="text-gray-300 mb-4 text-center md:text-left text-lg">
-              This IoT project leverages an ESP32 microcontroller for the acquisition and transmission of temperature and humidity data to a RESTful API.
-              The front-end architecture utilizes Next.js, Redux, Tailwind CSS, TypeScript, React, and Recharts, enabling a dynamic and responsive user interface with advanced data visualization capabilities.
-              A real-time data collection system, written in C++, interfaces with environmental sensors to capture metrics.
-              A RESTful API was constructed using Node.js and Express.js, facilitating efficient communication between the ESP32 device and the backend services.
-              For deployment, AWS EC2 and Amplify were utilized , ensuring high availability and scalability of the application.
+              A comprehensive Internet of Things (IoT) solution that monitors
+                temperature and humidity levels. Utilizes an ESP32 device to
+                collect data from sensors and transmit it to a web application.
+                The ESP32's Wi-Fi capabilities enable it to collect data from the
+                sensors and transmit it to a backend server.
+                A user-friendly interface was created to display real-time
+                environmental metrics, making it easy for users to access the
+                information.
             </p>
             <div className="flex flex-wrap gap-2 mb-4 justify-center md:justify-start">
               {[
-                "C++",
-                "React",
-                "Node.js",
-                "AWS Amplify",
-                "EC2",
-                "TypeScript",
-                "Recharts",
-                "ESP32",
-                "PlatformIO",
+                  "C++",
+                  "ESP32",
+                  'Sensor Interfacing',
+                  'Power Management',
+                  "React",
+                  "Node.js",
+                  "AWS Amplify",
+                  "EC2",
+                  "TypeScript",
+                  "Recharts",
               ].map((tech, key) => (
                 <span key={key} className="tech-icon">
                   {tech}
